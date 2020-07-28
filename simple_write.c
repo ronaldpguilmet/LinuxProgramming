@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int main(){
-    if ((write(1, "Here is some data to display\n", 29)) != 29)
-        write(2, "A write error has occurred on file descriptor 1\n",47);
+    if ((write(1, "Hello Ron\n", 10)) != 10)
+        write(2, "A write error has occurred on file descriptor 1\n",10);
     exit(0);
 }
