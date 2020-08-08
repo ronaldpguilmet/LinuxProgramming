@@ -1,0 +1,100 @@
+--- Debian/ioctl.h	2020-08-08 19:33:51.000000000 -0400
++++ FreeBSD/ioctl.h	2020-08-08 19:31:06.000000000 -0400
+@@ -1,45 +1,53 @@
+-/* Copyright (C) 1991-2018 Free Software Foundation, Inc.
+-   This file is part of the GNU C Library.
++/*-
++ * SPDX-License-Identifier: BSD-3-Clause
++ *
++ * Copyright (c) 1982, 1986, 1990, 1993, 1994
++ *	The Regents of the University of California.  All rights reserved.
++ * (c) UNIX System Laboratories, Inc.
++ * All or some portions of this file are derived from material licensed
++ * to the University of California by American Telephone and Telegraph
++ * Co. or Unix System Laboratories, Inc. and are reproduced herein with
++ * the permission of UNIX System Laboratories, Inc.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. Neither the name of the University nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ *
++ *	@(#)ioctl.h	8.6 (Berkeley) 3/28/94
++ * $FreeBSD: releng/12.1/sys/sys/ioctl.h 326023 2017-11-20 19:43:44Z pfg $
++ */
++
++#ifndef	_SYS_IOCTL_H_
++#define	_SYS_IOCTL_H_
++
++#ifdef _KERNEL
++#error "Don't #include ioctl.h in the kernel.  Include xxxio.h instead."
++#endif /* _KERNEL */
++
++#include <sys/ioccom.h>
++
++#include <sys/filio.h>
++#include <sys/sockio.h>
++#include <sys/ttycom.h>
+ 
+-   The GNU C Library is free software; you can redistribute it and/or
+-   modify it under the terms of the GNU Lesser General Public
+-   License as published by the Free Software Foundation; either
+-   version 2.1 of the License, or (at your option) any later version.
+-
+-   The GNU C Library is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-   Lesser General Public License for more details.
+-
+-   You should have received a copy of the GNU Lesser General Public
+-   License along with the GNU C Library; if not, see
+-   <http://www.gnu.org/licenses/>.  */
+-
+-#ifndef	_SYS_IOCTL_H
+-#define	_SYS_IOCTL_H	1
+-
+-#include <features.h>
+-
+-__BEGIN_DECLS
+-
+-/* Get the list of `ioctl' requests and related constants.  */
+-#include <bits/ioctls.h>
+-
+-/* Define some types used by `ioctl' requests.  */
+-#include <bits/ioctl-types.h>
+-
+-/* On a Unix system, the system <sys/ioctl.h> probably defines some of
+-   the symbols we define in <sys/ttydefaults.h> (usually with the same
+-   values).  The code to generate <bits/ioctls.h> has omitted these
+-   symbols to avoid the conflict, but a Unix program expects <sys/ioctl.h>
+-   to define them, so we must include <sys/ttydefaults.h> here.  */
+-#include <sys/ttydefaults.h>
+-
+-/* Perform the I/O control operation specified by REQUEST on FD.
+-   One argument may follow; its presence and type depend on REQUEST.
+-   Return value depends on REQUEST.  Usually -1 indicates error.  */
+-extern int ioctl (int __fd, unsigned long int __request, ...) __THROW;
+-
+-__END_DECLS
+-
+-#endif /* sys/ioctl.h */
++#endif /* !_SYS_IOCTL_H_ */
