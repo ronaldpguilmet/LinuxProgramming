@@ -1,0 +1,2 @@
+SystemCalls git:(master) ✗ time ./copy_system              
+./copy_system  0.67s user 4.64s system 93% cpu 5.692 total
