@@ -1,0 +1,2 @@
+LinuxProgramming git:(master) ✗ time ./copy_block             
+./copy_block  0.00s user 0.00s system 58% cpu 0.005 total
