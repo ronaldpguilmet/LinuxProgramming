@@ -1,0 +1,8 @@
+1M Copy System,1M Copy Block
+0.67s user 4.64s system 93% cpu 5.692 total,0.00s user 0.00s system 26% cpu 0.016 total
+,
+10M Copy System,10M Copy Block
+6.69s user 48.15s system 90% cpu 1:00.34 total,0.00s user 0.00s system 58% cpu 0.005 total
+,
+100M Copy System,100M Copy Block
+66.85s user 583.28s system 91% cpu 11:50.28 total,0.00s user 0.00s system 55% cpu 0.006 total
